@@ -25,6 +25,10 @@ public class WowController {
         List<Wow> wows = wowDao.findAll();
 
         Wow wow = wows.get(index++);
+
+        if(index >= wows.size())
+            index = 0;
+
         return wow.getWowMessage();
     }
 
