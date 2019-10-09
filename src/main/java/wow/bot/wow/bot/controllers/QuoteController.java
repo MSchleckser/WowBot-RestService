@@ -29,7 +29,10 @@ public class QuoteController {
         Quote quote = quoteDao.findAll().stream()
                 .filter(q -> q.getUserMention().equals(userMention))
                 .sorted(Comparator.comparing(Quote::getQuoteTimeStamp))
-                .findFirst().get();
+                .findFirst().orElse(null);
+
+        if(quote == null)
+            return new JSONObject().toJSONString();
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("user", quote.getUserMention());
@@ -46,6 +49,9 @@ public class QuoteController {
                 .filter(q -> q.getUserMention().equals(userMention))
                 .sorted(Comparator.comparing(Quote::getQuoteTimeStamp))
                 .collect(Collectors.toList());
+
+        if(quotes.isEmpty())
+            return new JSONObject().toJSONString();
 
         Random r = new Random();
         Quote quote = quotes.get(r.nextInt(quotes.size()));

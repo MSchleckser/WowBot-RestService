@@ -9,16 +9,16 @@ import javax.persistence.Table;
 public class Kill {
 
 	@Id
-	private String user;
+	private String userName;
 
 	private int numberOfKills;
 
-	public String getUser() {
-		return user;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public int getNumberOfKills() {

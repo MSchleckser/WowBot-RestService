@@ -23,7 +23,7 @@ public class KillController {
 		Kill kill = null;
 		if (!killsDao.existsById(user)) {
 			kill = new Kill();
-			kill.setUser(user);
+			kill.setUserName(user);
 			kill.setNumberOfKills(1);
 		} else {
 			kill = killsDao.getOne(user);
@@ -40,7 +40,7 @@ public class KillController {
 		String user = request.getParameter("user");
 
 		if(!killsDao.existsById(user))
-			return "-1";
+			return "0";
 
 		return Integer.toString(killsDao.getOne(user).getNumberOfKills());
 	}

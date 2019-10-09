@@ -24,6 +24,9 @@ public class WowController {
     public String getWow(){
         List<Wow> wows = wowDao.findAll();
 
+        if(wows.size() == 0)
+            return "Fail";
+
         Wow wow = wows.get(index++);
 
         if(index >= wows.size())
